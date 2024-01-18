@@ -19,6 +19,10 @@
 		B708765A2B575CCF005DE87B /* WhatToDoToday_iosUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B70876592B575CCF005DE87B /* WhatToDoToday_iosUITestsLaunchTests.swift */; };
 		B708766B2B576281005DE87B /* AddPreview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708766A2B576281005DE87B /* AddPreview.swift */; };
 		B708766D2B57AD8C005DE87B /* ToDoListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B708766C2B57AD8C005DE87B /* ToDoListCell.swift */; };
+		B73CF6302B58C58E00EDAA10 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF62F2B58C58E00EDAA10 /* CalendarViewController.swift */; };
+		B73CF6322B58C5A500EDAA10 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */; };
+		B73CF6342B58E2CE00EDAA10 /* TabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6332B58E2CE00EDAA10 /* TabBarControllerViewController.swift */; };
+		B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6352B591B7400EDAA10 /* GaugeChart.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +59,10 @@
 		B70876592B575CCF005DE87B /* WhatToDoToday_iosUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhatToDoToday_iosUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B708766A2B576281005DE87B /* AddPreview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPreview.swift; sourceTree = "<group>"; };
 		B708766C2B57AD8C005DE87B /* ToDoListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoListCell.swift; sourceTree = "<group>"; };
+		B73CF62F2B58C58E00EDAA10 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
+		B73CF6332B58E2CE00EDAA10 /* TabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerViewController.swift; sourceTree = "<group>"; };
+		B73CF6352B591B7400EDAA10 /* GaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeChart.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,8 +148,12 @@
 			isa = PBXGroup;
 			children = (
 				B70876372B575CCE005DE87B /* TodayViewController.swift */,
+				B73CF62F2B58C58E00EDAA10 /* CalendarViewController.swift */,
+				B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */,
+				B73CF6332B58E2CE00EDAA10 /* TabBarControllerViewController.swift */,
 				B70876392B575CCE005DE87B /* Main.storyboard */,
 				B708766C2B57AD8C005DE87B /* ToDoListCell.swift */,
+				B73CF6352B591B7400EDAA10 /* GaugeChart.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -299,12 +311,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B73CF6342B58E2CE00EDAA10 /* TabBarControllerViewController.swift in Sources */,
 				B70876382B575CCE005DE87B /* TodayViewController.swift in Sources */,
 				B70876342B575CCE005DE87B /* AppDelegate.swift in Sources */,
 				B70876362B575CCE005DE87B /* SceneDelegate.swift in Sources */,
+				B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */,
 				B708766B2B576281005DE87B /* AddPreview.swift in Sources */,
 				B708763E2B575CCE005DE87B /* WhatToDoToday_ios.xcdatamodeld in Sources */,
+				B73CF6302B58C58E00EDAA10 /* CalendarViewController.swift in Sources */,
 				B708766D2B57AD8C005DE87B /* ToDoListCell.swift in Sources */,
+				B73CF6322B58C5A500EDAA10 /* MyPageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
