@@ -50,9 +50,9 @@ final class ToDoListCell: UITableViewCell {
     }
     
     func setupLayout() {
-        layer.shadowColor = UIColor.lightGray.cgColor
-        layer.shadowOpacity = 0.2
-        layer.shadowRadius = 8
+//        layer.shadowColor = UIColor.lightGray.cgColor
+//        layer.shadowOpacity = 0.2
+//        layer.shadowRadius = 8
         contentView.addSubview(toDoMark)
         contentView.addSubview(toDoTitle)
         contentView.layer.borderWidth = 1

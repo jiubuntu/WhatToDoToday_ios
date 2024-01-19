@@ -55,7 +55,7 @@ class TodayViewController: UIViewController{
     private lazy var ToDoTextField: UITextField = {
         let textField = UITextField()
         textField.placeholder = "해야 할 일을 입력해 주세요"
-        let placeholderColor = UIColor.gray
+        let placeholderColor = UIColor.lightGray
         textField.attributedPlaceholder = NSAttributedString(string: "해야 할 일을 입력해 주세요", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
         textField.tintColor = UIColor.lightGray
         textField.backgroundColor = UIColor.white
@@ -88,13 +88,6 @@ class TodayViewController: UIViewController{
         return button
     }()
     
-    
-    // MARK: - 테이블뷰를 담을 뷰
-//    private lazy var ToDoListView: UIView = {
-//        let view = UIView()
-//        view.addSubview(<#T##view: UIView##UIView#>)
-//        return view
-//    }()
     
     
     
@@ -184,7 +177,7 @@ class TodayViewController: UIViewController{
             ToDoTextFieldButton.heightAnchor.constraint(equalToConstant: 30),
             
             ToDoList.widthAnchor.constraint(equalToConstant: 350),
-            ToDoList.heightAnchor.constraint(equalToConstant: 420),
+            ToDoList.heightAnchor.constraint(equalToConstant: 450),
             ToDoList.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             ToDoList.topAnchor.constraint(equalTo: ToDoTextFieldView.bottomAnchor, constant: 10)
             
@@ -195,9 +188,11 @@ class TodayViewController: UIViewController{
     
     private func setGaugeChart() {
         let hostingController = UIHostingController(rootView: GaugeChart())
+        hostingController.view.backgroundColor = UIColor.white
         // ViewController에 hostingController를 Child로 추가
         addChild(hostingController)
         RateView.addSubview(hostingController.view)
+        
         hostingController.view.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             hostingController.view.topAnchor.constraint(equalTo: RateView.topAnchor),

@@ -8,7 +8,7 @@
 import UIKit
 import SwiftUI
 
-// MARK: - preview를 위한...
+// MARK: - preview를 위한 설정
 extension UIViewController {
     private struct Preview: UIViewControllerRepresentable {
         let vc: UIViewController

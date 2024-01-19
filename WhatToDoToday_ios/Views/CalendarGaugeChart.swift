@@ -1,14 +1,9 @@
-//
-//  GaugeChart.swift
-//  WhatToDoToday_ios
-//
-//  Created by 김지우 on 1/18/24.
-//
-
 import UIKit
 import SwiftUI
 
-struct GaugeChart: View {
+
+// MARK: - 캘린더 화면에서 보여줄 게이지차트 정의
+struct CalendarGaugeChart: View {
     @State private var progress = 0.5
     
     var body: some View {
@@ -20,7 +15,3 @@ struct GaugeChart: View {
     }
     func hello() {}
 }
-
-
-
-

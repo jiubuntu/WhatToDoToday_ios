@@ -23,6 +23,8 @@
 		B73CF6322B58C5A500EDAA10 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */; };
 		B73CF6342B58E2CE00EDAA10 /* TabBarControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6332B58E2CE00EDAA10 /* TabBarControllerViewController.swift */; };
 		B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6352B591B7400EDAA10 /* GaugeChart.swift */; };
+		B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */; };
+		B7AABAED2B5A68DA00947725 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEC2B5A68DA00947725 /* Color.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +45,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		039D32BAD71B96F59CEC30EA /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.release.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.release.xcconfig"; sourceTree = "<group>"; };
+		446B40D025CE12FECF67DD77 /* Pods-WhatToDoToday_iosTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_iosTests.release.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_iosTests/Pods-WhatToDoToday_iosTests.release.xcconfig"; sourceTree = "<group>"; };
+		4570C491A5BA5E4342866138 /* Pods-WhatToDoToday_iosTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_iosTests.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_iosTests/Pods-WhatToDoToday_iosTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6A8A48158CA90E05496C5047 /* Pods-WhatToDoToday_ios.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios.release.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios/Pods-WhatToDoToday_ios.release.xcconfig"; sourceTree = "<group>"; };
+		8E1C41D8DE230811230B5159 /* Pods-WhatToDoToday_ios.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios/Pods-WhatToDoToday_ios.debug.xcconfig"; sourceTree = "<group>"; };
 		B70876302B575CCE005DE87B /* WhatToDoToday_ios.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WhatToDoToday_ios.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B70876332B575CCE005DE87B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B70876352B575CCE005DE87B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +70,9 @@
 		B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		B73CF6332B58E2CE00EDAA10 /* TabBarControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarControllerViewController.swift; sourceTree = "<group>"; };
 		B73CF6352B591B7400EDAA10 /* GaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeChart.swift; sourceTree = "<group>"; };
+		B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGaugeChart.swift; sourceTree = "<group>"; };
+		B7AABAEC2B5A68DA00947725 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		F660850040C61FEDF7FA8BE0 /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +100,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		966B782DE1AB8FF578C76CDE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		B6458C9AB0D5A63DE71F6515 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8E1C41D8DE230811230B5159 /* Pods-WhatToDoToday_ios.debug.xcconfig */,
+				6A8A48158CA90E05496C5047 /* Pods-WhatToDoToday_ios.release.xcconfig */,
+				F660850040C61FEDF7FA8BE0 /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig */,
+				039D32BAD71B96F59CEC30EA /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.release.xcconfig */,
+				4570C491A5BA5E4342866138 /* Pods-WhatToDoToday_iosTests.debug.xcconfig */,
+				446B40D025CE12FECF67DD77 /* Pods-WhatToDoToday_iosTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		B70876272B575CCD005DE87B = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +127,8 @@
 				B708764C2B575CCF005DE87B /* WhatToDoToday_iosTests */,
 				B70876562B575CCF005DE87B /* WhatToDoToday_iosUITests */,
 				B70876312B575CCE005DE87B /* Products */,
+				B6458C9AB0D5A63DE71F6515 /* Pods */,
+				966B782DE1AB8FF578C76CDE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +186,7 @@
 				B70876392B575CCE005DE87B /* Main.storyboard */,
 				B708766C2B57AD8C005DE87B /* ToDoListCell.swift */,
 				B73CF6352B591B7400EDAA10 /* GaugeChart.swift */,
+				B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -176,6 +209,7 @@
 			isa = PBXGroup;
 			children = (
 				B708766A2B576281005DE87B /* AddPreview.swift */,
+				B7AABAEC2B5A68DA00947725 /* Color.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -187,6 +221,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B708765D2B575CCF005DE87B /* Build configuration list for PBXNativeTarget "WhatToDoToday_ios" */;
 			buildPhases = (
+				3DC987E1F119D19872CFBE51 /* [CP] Check Pods Manifest.lock */,
 				B708762C2B575CCE005DE87B /* Sources */,
 				B708762D2B575CCE005DE87B /* Frameworks */,
 				B708762E2B575CCE005DE87B /* Resources */,
@@ -204,6 +239,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B70876602B575CCF005DE87B /* Build configuration list for PBXNativeTarget "WhatToDoToday_iosTests" */;
 			buildPhases = (
+				26A1B85F9AA964E84F105E52 /* [CP] Check Pods Manifest.lock */,
 				B70876452B575CCF005DE87B /* Sources */,
 				B70876462B575CCF005DE87B /* Frameworks */,
 				B70876472B575CCF005DE87B /* Resources */,
@@ -222,6 +258,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B70876632B575CCF005DE87B /* Build configuration list for PBXNativeTarget "WhatToDoToday_iosUITests" */;
 			buildPhases = (
+				B69F2C90C6D28B9E8BF3EE96 /* [CP] Check Pods Manifest.lock */,
 				B708764F2B575CCF005DE87B /* Sources */,
 				B70876502B575CCF005DE87B /* Frameworks */,
 				B70876512B575CCF005DE87B /* Resources */,
@@ -306,15 +343,86 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		26A1B85F9AA964E84F105E52 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToDoToday_iosTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3DC987E1F119D19872CFBE51 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToDoToday_ios-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B69F2C90C6D28B9E8BF3EE96 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B708762C2B575CCE005DE87B /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B73CF6342B58E2CE00EDAA10 /* TabBarControllerViewController.swift in Sources */,
+				B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */,
 				B70876382B575CCE005DE87B /* TodayViewController.swift in Sources */,
 				B70876342B575CCE005DE87B /* AppDelegate.swift in Sources */,
 				B70876362B575CCE005DE87B /* SceneDelegate.swift in Sources */,
+				B7AABAED2B5A68DA00947725 /* Color.swift in Sources */,
 				B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */,
 				B708766B2B576281005DE87B /* AddPreview.swift in Sources */,
 				B708763E2B575CCE005DE87B /* WhatToDoToday_ios.xcdatamodeld in Sources */,
@@ -497,6 +605,7 @@
 		};
 		B708765E2B575CCF005DE87B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8E1C41D8DE230811230B5159 /* Pods-WhatToDoToday_ios.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -530,6 +639,7 @@
 		};
 		B708765F2B575CCF005DE87B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6A8A48158CA90E05496C5047 /* Pods-WhatToDoToday_ios.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -563,6 +673,7 @@
 		};
 		B70876612B575CCF005DE87B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4570C491A5BA5E4342866138 /* Pods-WhatToDoToday_iosTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -583,6 +694,7 @@
 		};
 		B70876622B575CCF005DE87B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 446B40D025CE12FECF67DD77 /* Pods-WhatToDoToday_iosTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -603,6 +715,7 @@
 		};
 		B70876642B575CCF005DE87B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F660850040C61FEDF7FA8BE0 /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -621,6 +734,7 @@
 		};
 		B70876652B575CCF005DE87B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 039D32BAD71B96F59CEC30EA /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
