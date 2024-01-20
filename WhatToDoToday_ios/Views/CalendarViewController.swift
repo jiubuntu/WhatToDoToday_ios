@@ -61,7 +61,12 @@ class CalendarViewController: UIViewController {
     // MARK: - 해야할일들을 표시하기 위한 테이블 뷰
     private lazy var CalendarToDoList: UITableView = {
         let tv = UITableView()
-        tv.backgroundColor = UIColor.white
+        // 다크모드인지 체크
+        if traitCollection.userInterfaceStyle == .light {
+            tv.backgroundColor = UIColor.white
+        } else {
+            tv.backgroundColor = UIColor.black
+        }
         return tv
     }()
     
@@ -88,11 +93,14 @@ class CalendarViewController: UIViewController {
     }
     
     
-    // MARK: - 다크모드일때와 라이트모드일때 화면 색 다르게하기
+    // MARK: - 다크모드일때와 라이트모드일때 다르게 세팅
     private func setLightDarkMode() {
         if #available(iOS 16.0, *) {
             if self.traitCollection.userInterfaceStyle == .light {
                 view.backgroundColor = UIColor.white
+                Calendar.layer.borderWidth = 1
+                Calendar.layer.cornerRadius = 10
+                Calendar.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7764705882, alpha: 1)
                 Calendar.backgroundColor = UIColor.white
                 Calendar.tintColor = UIColor.lightGray
                 Calendar.setValue(UIColor.black, forKey: "textColor")
@@ -160,7 +168,7 @@ class CalendarViewController: UIViewController {
             Calendar.trailingAnchor.constraint(equalTo: CalendarView.trailingAnchor, constant: 0),
             Calendar.bottomAnchor.constraint(equalTo: CalendarView.bottomAnchor, constant: 0),
             
-            CalendarGoalAchievementRateView.topAnchor.constraint(equalTo: CalendarView.bottomAnchor, constant: 5),
+            CalendarGoalAchievementRateView.topAnchor.constraint(equalTo: CalendarView.bottomAnchor, constant: 8),
             CalendarGoalAchievementRateView.heightAnchor.constraint(equalToConstant: 100),
             CalendarGoalAchievementRateView.widthAnchor.constraint(equalToConstant: 350),
             CalendarGoalAchievementRateView.centerXAnchor.constraint(equalTo: CalendarView.centerXAnchor),
@@ -196,11 +204,21 @@ extension CalendarViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListCell
-        cell.selectionStyle = .none
-        cell.contentView.backgroundColor = UIColor.white
-        cell.backgroundColor = UIColor.white
-        cell.toDoTitle.text = "test"
-        return cell
+        if traitCollection.userInterfaceStyle == .light {
+            cell.selectionStyle = .none
+            cell.contentView.backgroundColor = UIColor.white
+            cell.backgroundColor = UIColor.white
+            cell.toDoTitle.textColor = UIColor.black
+            cell.toDoTitle.text = "test"
+            return cell
+        } else {
+            cell.selectionStyle = .none
+            cell.contentView.backgroundColor = UIColor.black
+            cell.backgroundColor = UIColor.black
+            cell.toDoTitle.textColor = UIColor.white
+            cell.toDoTitle.text = "test"
+            return cell
+        }
     }
 }
 
