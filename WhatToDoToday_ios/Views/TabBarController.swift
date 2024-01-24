@@ -26,13 +26,13 @@ class TabBarController: UITabBarController {
     }
     
     private func setupTabBar() {
-        let firstVC = TodayViewController()
+        let firstVC = UINavigationController(rootViewController: TodayViewController())
         firstVC.tabBarItem.title = "TODAY" // TabBar Item 의 이름
         
-        let secondVC = CalendarViewController()
+        let secondVC = UINavigationController(rootViewController: CalendarViewController())
         secondVC.tabBarItem.title = "CALENDAR"
         
-        let thirdVC = MyPageViewController()
+        let thirdVC = UINavigationController(rootViewController: MyPageViewController())
         thirdVC.tabBarItem.title = "MY"
         
         viewControllers = [
