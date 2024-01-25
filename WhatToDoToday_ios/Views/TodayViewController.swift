@@ -42,36 +42,36 @@ class TodayViewController: UIViewController{
         return view
     }()
     
-    // MARK: - TODO를 추가하기 위한 영역
-    private lazy var ToDoTextFieldView: UIView = {
-        let view = UIView()
-        view.addSubview(ToDoTextField)
-        view.addSubview(ToDoTextFieldButton)
-        return view
-    }()
+    //    // MARK: - TODO를 추가하기 위한 영역
+    //    private lazy var ToDoTextFieldView: UIView = {
+    //        let view = UIView()
+    //        view.addSubview(ToDoTextField)
+    //        view.addSubview(ToDoTextFieldButton)
+    //        return view
+    //    }()
     
     
-    // MARK: - TODO를 추가하기 위한 텍스트필드
-    private lazy var ToDoTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "해야 할 일을 입력해 주세요"
-        let placeholderColor = UIColor.lightGray
-        textField.attributedPlaceholder = NSAttributedString(string: "해야 할 일을 입력해 주세요", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
-        textField.tintColor = UIColor.lightGray
-        textField.backgroundColor = UIColor.white
-        textField.textColor = UIColor.black
-        textField.autocapitalizationType = .none
-        textField.autocorrectionType = .no
-        textField.spellCheckingType = .no
-        textField.layer.cornerRadius = 8
-        textField.layer.borderColor = #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1)
-        textField.layer.borderWidth = 1
-        textField.textAlignment = .center
-        textField.rightView = ToDoTextFieldButton
-        textField.rightViewMode = .always
-        textField.keyboardType = .default
-        return textField
-    }()
+    //    // MARK: - TODO를 추가하기 위한 텍스트필드
+    //    private lazy var ToDoTextField: UITextField = {
+    //        let textField = UITextField()
+    //        textField.placeholder = "해야 할 일을 입력해 주세요"
+    //        let placeholderColor = UIColor.lightGray
+    //        textField.attributedPlaceholder = NSAttributedString(string: "해야 할 일을 입력해 주세요", attributes: [NSAttributedString.Key.foregroundColor: placeholderColor])
+    //        textField.tintColor = UIColor.lightGray
+    //        textField.backgroundColor = UIColor.white
+    //        textField.textColor = UIColor.black
+    //        textField.autocapitalizationType = .none
+    //        textField.autocorrectionType = .no
+    //        textField.spellCheckingType = .no
+    //        textField.layer.cornerRadius = 8
+    //        textField.layer.borderColor = #colorLiteral(red: 0.7882352941, green: 0.7882352941, blue: 0.7882352941, alpha: 1)
+    //        textField.layer.borderWidth = 1
+    //        textField.textAlignment = .center
+    //        textField.rightView = ToDoTextFieldButton
+    //        textField.rightViewMode = .always
+    //        textField.keyboardType = .default
+    //        return textField
+    //    }()
     
     
     // MARK: - TODO를 추가하기 위한 버튼
@@ -107,10 +107,11 @@ class TodayViewController: UIViewController{
         makeConstraint()
         config()
         setGaugeChart()
+        setupNavigationBar()
     }
     
     private func config() {
-        ToDoTextField.delegate = self
+        //        ToDoTextField.delegate = self
         ToDoList.dataSource = self
         ToDoList.delegate = self
     }
@@ -128,10 +129,10 @@ class TodayViewController: UIViewController{
         goalLabel.translatesAutoresizingMaskIntoConstraints = false
         RateView.translatesAutoresizingMaskIntoConstraints = false
         
-        view.addSubview(ToDoTextFieldView)
-        ToDoTextFieldView.translatesAutoresizingMaskIntoConstraints = false
-        ToDoTextField.translatesAutoresizingMaskIntoConstraints = false
-        ToDoTextFieldButton.translatesAutoresizingMaskIntoConstraints = false
+        //        view.addSubview(ToDoTextFieldView)
+        //        ToDoTextFieldView.translatesAutoresizingMaskIntoConstraints = false
+        //        ToDoTextField.translatesAutoresizingMaskIntoConstraints = false
+        //        ToDoTextFieldButton.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(ToDoList)
         ToDoList.translatesAutoresizingMaskIntoConstraints = false
@@ -161,25 +162,25 @@ class TodayViewController: UIViewController{
             RateView.centerXAnchor.constraint(equalTo: goalLabel.centerXAnchor),
             RateView.widthAnchor.constraint(equalTo: goalAchievementRateView.widthAnchor, constant: 0),
             
-            ToDoTextFieldView.heightAnchor.constraint(equalToConstant: 60),
-            ToDoTextFieldView.widthAnchor.constraint(equalToConstant: 350),
-            ToDoTextFieldView.topAnchor.constraint(equalTo: goalAchievementRateView.bottomAnchor, constant: 10),
-            ToDoTextFieldView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            //            ToDoTextFieldView.heightAnchor.constraint(equalToConstant: 60),
+            //            ToDoTextFieldView.widthAnchor.constraint(equalToConstant: 350),
+            //            ToDoTextFieldView.topAnchor.constraint(equalTo: goalAchievementRateView.bottomAnchor, constant: 10),
+            //            ToDoTextFieldView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            //
+            //
+            //            ToDoTextField.centerYAnchor.constraint(equalTo: ToDoTextFieldView.centerYAnchor),
+            //            ToDoTextField.leadingAnchor.constraint(equalTo: ToDoTextFieldView.leadingAnchor, constant: 0),
+            //            ToDoTextField.widthAnchor.constraint(equalTo: ToDoTextFieldView.widthAnchor, constant: -0),
+            //            ToDoTextField.heightAnchor.constraint(equalToConstant: 30),
             
             
-            ToDoTextField.centerYAnchor.constraint(equalTo: ToDoTextFieldView.centerYAnchor),
-            ToDoTextField.leadingAnchor.constraint(equalTo: ToDoTextFieldView.leadingAnchor, constant: 0),
-            ToDoTextField.widthAnchor.constraint(equalTo: ToDoTextFieldView.widthAnchor, constant: -0),
-            ToDoTextField.heightAnchor.constraint(equalToConstant: 30),
-            
-            
-            ToDoTextFieldButton.widthAnchor.constraint(equalToConstant: 50),
-            ToDoTextFieldButton.heightAnchor.constraint(equalToConstant: 30),
+            //            ToDoTextFieldButton.widthAnchor.constraint(equalToConstant: 50),
+            //            ToDoTextFieldButton.heightAnchor.constraint(equalToConstant: 30),
             
             ToDoList.widthAnchor.constraint(equalToConstant: 350),
-            ToDoList.heightAnchor.constraint(equalToConstant: 450),
+            ToDoList.heightAnchor.constraint(equalToConstant: 500),
             ToDoList.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
-            ToDoList.topAnchor.constraint(equalTo: ToDoTextFieldView.bottomAnchor, constant: 10)
+            ToDoList.topAnchor.constraint(equalTo: goalAchievementRateView.bottomAnchor, constant: 10)
             
             
             
@@ -201,6 +202,38 @@ class TodayViewController: UIViewController{
             hostingController.view.bottomAnchor.constraint(equalTo: RateView.bottomAnchor)
         ])
         hostingController.didMove(toParent: self)
+    }
+    
+    private func setupNavigationBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.9568627451, blue: 0.9058823529, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+        
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+        
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
+        navigationController?.navigationBar.isTranslucent = false
+        title = "TODAY"
+        
+        
+        // 네비게이션바 우측에 Plus 버튼 만들기
+        let plusButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(todoPlusButtonTapped))
+        plusButton.tintColor = .black
+        navigationItem.rightBarButtonItem = plusButton
+    }
+    
+    
+    @objc private func todoPlusButtonTapped() {
+        let addToDoVC = AddToDoViewController()
+        addToDoVC.toDoDate = Date()
+        //        addToDoVC.modalPresentationStyle = .automatic // 전체화면으로 설정
+        //        present(addToDoVC, animated: true, completion: nil)
+        addToDoVC.title = "할일 추가" // title 설정
+        navigationController?.pushViewController(addToDoVC, animated: true)
     }
 }
 
@@ -229,6 +262,14 @@ extension TodayViewController: UITableViewDelegate {
         return 55
     }
     
+    
+    // MARK: - 셀 클릭 시 동작
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀을 클릭했을 때 실행되는 코드
+        let toDoDetailVC = ToDoDetailViewController()
+        toDoDetailVC.modalPresentationStyle = .automatic
+        present(toDoDetailVC, animated: true, completion: nil)
+    }
 }
 
 

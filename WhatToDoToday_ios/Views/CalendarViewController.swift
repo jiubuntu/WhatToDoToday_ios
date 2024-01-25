@@ -80,6 +80,7 @@ class CalendarViewController: UIViewController {
         config()
         setTableView()
         setGaugeChart()
+        setupNavigationBar()
     }
     
     private func config() {
@@ -102,7 +103,7 @@ class CalendarViewController: UIViewController {
                 Calendar.layer.cornerRadius = 10
                 Calendar.layer.borderColor = #colorLiteral(red: 0.7764705882, green: 0.7764705882, blue: 0.7764705882, alpha: 1)
                 Calendar.backgroundColor = UIColor.white
-                Calendar.tintColor = UIColor.lightGray
+                Calendar.tintColor = UIColor.systemYellow
                 Calendar.setValue(UIColor.black, forKey: "textColor")
                 if let datePickerText = Calendar.subviews.first?.subviews.last as? UITextField {
                     datePickerText.textColor = UIColor.black
@@ -110,7 +111,7 @@ class CalendarViewController: UIViewController {
             } else {
                 view.backgroundColor = UIColor.black
                 Calendar.backgroundColor = UIColor.black
-                Calendar.tintColor = UIColor.white
+                Calendar.tintColor = UIColor.systemYellow
                 Calendar.setValue(UIColor.white, forKey: "textColor")
                 
                 if let datePickerText = Calendar.subviews.first?.subviews.last as? UITextField {
@@ -194,6 +195,37 @@ class CalendarViewController: UIViewController {
         ])
     }
     
+    private func setupNavigationBar() {
+        let navigationBarAppearance = UINavigationBarAppearance()
+        navigationBarAppearance.configureWithOpaqueBackground()
+        navigationBarAppearance.backgroundColor = #colorLiteral(red: 0.937254902, green: 0.9568627451, blue: 0.9058823529, alpha: 1)
+        navigationController?.navigationBar.standardAppearance = navigationBarAppearance
+        navigationController?.navigationBar.scrollEdgeAppearance = navigationBarAppearance
+
+        navigationItem.scrollEdgeAppearance = navigationBarAppearance
+        navigationItem.standardAppearance = navigationBarAppearance
+        navigationItem.compactAppearance = navigationBarAppearance
+
+        navigationController?.setNeedsStatusBarAppearanceUpdate()
+        
+        navigationController?.navigationBar.isTranslucent = false
+        
+        title = "CALENDAR"
+        
+        // 네비게이션바 우측에 Plus 버튼 만들기
+        let plusButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(todoPlusButtonTapped))
+        plusButton.tintColor = .black
+        navigationItem.rightBarButtonItem = plusButton
+    }
+    
+    
+    @objc private func todoPlusButtonTapped() {
+        let addToDoVC = AddToDoViewController()
+        addToDoVC.toDoDate = Date()
+        addToDoVC.title = "할일 추가" // title 설정
+        navigationController?.pushViewController(addToDoVC, animated: true)
+    }
+    
 }
 
 // MARK: - 테이블뷰 설정
@@ -228,6 +260,14 @@ extension CalendarViewController: UITableViewDelegate {
     // MARK: - 셀의 높이 설정
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 55
+    }
+    
+    // MARK: - 셀 클릭 시 동작
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // 셀을 클릭했을 때 실행되는 코드
+        let toDoDetailVC = ToDoDetailViewController()
+        toDoDetailVC.modalPresentationStyle = .automatic
+        present(toDoDetailVC, animated: true, completion: nil)
     }
     
 }

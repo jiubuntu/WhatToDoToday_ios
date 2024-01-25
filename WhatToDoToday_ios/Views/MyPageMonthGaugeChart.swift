@@ -1,8 +1,19 @@
-//
-//  MyPageMonthGaugeChart.swift
-//  WhatToDoToday_ios
-//
-//  Created by 김지우 on 1/23/24.
-//
+import UIKit
+import SwiftUI
 
-import Foundation
+
+// MARK: - MyPage 화면에서 보여줄 month 게이지차트 정의
+struct MyPageMonthGaugeChart: View {
+    @State private var progress = 0.5
+    
+    var body: some View {
+        Gauge(value: progress) {
+            Text("최근 30일")
+                .foregroundColor(Color(.black))
+                .font(Font.system(.body).weight(.bold))
+        } currentValueLabel: {
+            Text(progress.formatted(.percent))
+        }
+        .accentColor(Color(hex: 0x9FDEBD))
+    }
+}

@@ -38,7 +38,7 @@ final class ToDoListCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         // todoMark를 원모양으로 만드는 코드
-        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 5))
+        contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
 //        contentView.layer.cornerRadius = toDoMark.bounds.width / 2
         contentView.layer.masksToBounds = true
         

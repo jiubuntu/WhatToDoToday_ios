@@ -18,7 +18,6 @@ struct GaugeChart: View {
         }
         .accentColor(Color(hex: 0x9FDEBD))
     }
-    func hello() {}
 }
 
 

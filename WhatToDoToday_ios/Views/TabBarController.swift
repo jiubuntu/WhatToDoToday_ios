@@ -12,6 +12,10 @@ class TabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTabBar()
+    }
+    
+    private func setupTabBar() {
         tabBar.backgroundColor = #colorLiteral(red: 0.7921568627, green: 0.7843137255, blue: 0.7843137255, alpha: 1)
         tabBar.tintColor = UIColor.white
         tabBar.unselectedItemTintColor = #colorLiteral(red: 0.5331481099, green: 0.5331481099, blue: 0.5331481099, alpha: 1)
@@ -20,12 +24,6 @@ class TabBarController: UITabBarController {
         let attributes = [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 17.5)]
         UITabBarItem.appearance().setTitleTextAttributes(attributes, for: .normal)
         
-        
-        
-        setupTabBar()
-    }
-    
-    private func setupTabBar() {
         let firstVC = UINavigationController(rootViewController: TodayViewController())
         firstVC.tabBarItem.title = "TODAY" // TabBar Item 의 이름
         
