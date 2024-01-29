@@ -23,6 +23,9 @@
 		B73CF6322B58C5A500EDAA10 /* MyPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */; };
 		B73CF6342B58E2CE00EDAA10 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6332B58E2CE00EDAA10 /* TabBarController.swift */; };
 		B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73CF6352B591B7400EDAA10 /* GaugeChart.swift */; };
+		B74B58C72B63A23900B73B9F /* Todo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58C52B63A23900B73B9F /* Todo+CoreDataClass.swift */; };
+		B74B58C82B63A23900B73B9F /* Todo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58C62B63A23900B73B9F /* Todo+CoreDataProperties.swift */; };
+		B74B58CA2B63A98500B73B9F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58C92B63A98500B73B9F /* CoreDataManager.swift */; };
 		B76FE5542B61015F00E34731 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76FE5532B61015F00E34731 /* AddToDoViewController.swift */; };
 		B76FE5562B61099500E34731 /* ToDoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76FE5552B61099500E34731 /* ToDoDetailViewController.swift */; };
 		B7992E6A2B5F978400FEE62E /* MyPageTotalGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7992E692B5F978400FEE62E /* MyPageTotalGaugeChart.swift */; };
@@ -30,7 +33,6 @@
 		B7992E6E2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7992E6D2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift */; };
 		B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */; };
 		B7AABAED2B5A68DA00947725 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEC2B5A68DA00947725 /* Color.swift */; };
-		B7CB30082B60CC6B00D22633 /* Todo.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7CB30072B60CC6B00D22633 /* Todo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +78,9 @@
 		B73CF6312B58C5A500EDAA10 /* MyPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageViewController.swift; sourceTree = "<group>"; };
 		B73CF6332B58E2CE00EDAA10 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		B73CF6352B591B7400EDAA10 /* GaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeChart.swift; sourceTree = "<group>"; };
+		B74B58C52B63A23900B73B9F /* Todo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataClass.swift"; sourceTree = "<group>"; };
+		B74B58C62B63A23900B73B9F /* Todo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Todo+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		B74B58C92B63A98500B73B9F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B76FE5532B61015F00E34731 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		B76FE5552B61099500E34731 /* ToDoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailViewController.swift; sourceTree = "<group>"; };
 		B7992E692B5F978400FEE62E /* MyPageTotalGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTotalGaugeChart.swift; sourceTree = "<group>"; };
@@ -83,7 +88,6 @@
 		B7992E6D2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageWeekGaugeChart.swift; sourceTree = "<group>"; };
 		B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGaugeChart.swift; sourceTree = "<group>"; };
 		B7AABAEC2B5A68DA00947725 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
-		B7CB30072B60CC6B00D22633 /* Todo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Todo.swift; sourceTree = "<group>"; };
 		F660850040C61FEDF7FA8BE0 /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -211,6 +215,7 @@
 		B70876672B575D43005DE87B /* VIewModels */ = {
 			isa = PBXGroup;
 			children = (
+				B74B58C92B63A98500B73B9F /* CoreDataManager.swift */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -218,7 +223,8 @@
 		B70876682B575D4C005DE87B /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				B7CB30072B60CC6B00D22633 /* Todo.swift */,
+				B74B58C52B63A23900B73B9F /* Todo+CoreDataClass.swift */,
+				B74B58C62B63A23900B73B9F /* Todo+CoreDataProperties.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,11 +444,13 @@
 				B73CF6342B58E2CE00EDAA10 /* TabBarController.swift in Sources */,
 				B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */,
 				B7992E6E2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift in Sources */,
-				B7CB30082B60CC6B00D22633 /* Todo.swift in Sources */,
 				B70876382B575CCE005DE87B /* TodayViewController.swift in Sources */,
 				B70876342B575CCE005DE87B /* AppDelegate.swift in Sources */,
 				B70876362B575CCE005DE87B /* SceneDelegate.swift in Sources */,
+				B74B58CA2B63A98500B73B9F /* CoreDataManager.swift in Sources */,
+				B74B58C72B63A23900B73B9F /* Todo+CoreDataClass.swift in Sources */,
 				B76FE5562B61099500E34731 /* ToDoDetailViewController.swift in Sources */,
+				B74B58C82B63A23900B73B9F /* Todo+CoreDataProperties.swift in Sources */,
 				B7AABAED2B5A68DA00947725 /* Color.swift in Sources */,
 				B7992E6A2B5F978400FEE62E /* MyPageTotalGaugeChart.swift in Sources */,
 				B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */,

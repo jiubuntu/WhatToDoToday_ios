@@ -3,6 +3,9 @@ import UIKit
 import SwiftUI
 
 class AddToDoViewController: UIViewController {
+    
+    let toDoManager = CoreDataManager.shared
+    
     let datePicker = UIDatePicker()
     
     var toDoDate: Date? {
@@ -64,6 +67,7 @@ class AddToDoViewController: UIViewController {
         button.layer.cornerRadius = 7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(AddToDoViewController.self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
     
@@ -199,6 +203,13 @@ class AddToDoViewController: UIViewController {
     // 다른 곳을 터치하면 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
+    }
+    
+    
+    // MARK: - Todo 추가
+    @objc func addButtonTapped() {
+        // datepicker, textfield, textview 의 값을 가져오기
+        // datepicker, textfield, textview 의 값을 view model에게 전달
     }
 }
 

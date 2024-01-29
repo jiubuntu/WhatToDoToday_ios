@@ -15,9 +15,9 @@ extension Todo {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Todo> {
         return NSFetchRequest<Todo>(entityName: "Todo")
     }
-
+    @NSManaged public var pkey: UUID?
     @NSManaged public var memoTitle: String?
-    @NSManaged public var momoContent: String?
+    @NSManaged public var memoContent: String?
     @NSManaged public var date: Date?
     @NSManaged public var complete: Bool
 

@@ -39,7 +39,6 @@ final class ToDoListCell: UITableViewCell {
         super.layoutSubviews()
         // todoMark를 원모양으로 만드는 코드
         contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0))
-//        contentView.layer.cornerRadius = toDoMark.bounds.width / 2
         contentView.layer.masksToBounds = true
         
     }
@@ -50,14 +49,10 @@ final class ToDoListCell: UITableViewCell {
     }
     
     func setupLayout() {
-//        layer.shadowColor = UIColor.lightGray.cgColor
-//        layer.shadowOpacity = 0.2
-//        layer.shadowRadius = 8
         contentView.addSubview(toDoMark)
         contentView.addSubview(toDoTitle)
         contentView.layer.borderWidth = 1
         contentView.layer.borderColor = #colorLiteral(red: 0.7764706016, green: 0.7764706016, blue: 0.7764706016, alpha: 1)
-//        contentView.layer.cornerRadius = 8
         
     }
     

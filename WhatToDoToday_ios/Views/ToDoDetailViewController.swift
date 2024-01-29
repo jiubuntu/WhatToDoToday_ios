@@ -53,7 +53,7 @@ class ToDoDetailViewController: UIViewController {
     let addButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("수정하기", for: .normal)
-        button.backgroundColor = #colorLiteral(red: 0.9490196078, green: 0.6862745098, blue: 0.937254902, alpha: 1)
+        button.backgroundColor = #colorLiteral(red: 0.3215686275, green: 0.3607843137, blue: 0.9215686275, alpha: 1)
         button.layer.cornerRadius = 7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(UIColor.white, for: .normal)

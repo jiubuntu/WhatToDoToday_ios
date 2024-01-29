@@ -181,7 +181,6 @@ class CalendarViewController: UIViewController {
             CalendarGoalLabel.topAnchor.constraint(equalTo: CalendarGoalAchievementRateView.topAnchor, constant: 10),
             
             
-//            CalendarRateView.heightAnchor.constraint(equalToConstant: 90),
             CalendarRateView.topAnchor.constraint(equalTo: CalendarGoalLabel.bottomAnchor, constant: 10),
             CalendarRateView.centerXAnchor.constraint(equalTo: CalendarGoalLabel.centerXAnchor),
             CalendarRateView.widthAnchor.constraint(equalTo: CalendarGoalAchievementRateView.widthAnchor, constant: 0),
