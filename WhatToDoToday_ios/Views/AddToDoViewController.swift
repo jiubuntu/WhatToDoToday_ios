@@ -4,7 +4,9 @@ import SwiftUI
 
 class AddToDoViewController: UIViewController {
     
-    let toDoManager = CoreDataManager.shared
+    let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    
+    let dateFormat = DateFormat()
     
     let datePicker = UIDatePicker()
     
@@ -13,6 +15,9 @@ class AddToDoViewController: UIViewController {
 //            setDate()
         }
     }
+    
+    
+    
     
     let dateStackView: UIStackView = {
         let sv = UIStackView()
@@ -42,7 +47,7 @@ class AddToDoViewController: UIViewController {
         let tf = UITextField()
         tf.backgroundColor = .secondarySystemBackground
         tf.layer.cornerRadius = 7
-        tf.placeholder = "할일의 제목을 입력해주세요"
+        tf.placeholder = "할 일의 제목을 입력해 주세요"
         tf.textAlignment = .center
         tf.font = UIFont.systemFont(ofSize: 16)
         return tf
@@ -53,7 +58,7 @@ class AddToDoViewController: UIViewController {
         let tv = UITextView()
         tv.backgroundColor = .secondarySystemBackground
         tv.layer.cornerRadius = 7
-        tv.text = "할일의 내용을 입력해주세요"
+        tv.text = "할 일의 내용을 입력해 주세요"
         tv.textColor = .lightGray
         tv.textAlignment = .center
         tv.font = UIFont.systemFont(ofSize: 16)
@@ -67,9 +72,11 @@ class AddToDoViewController: UIViewController {
         button.layer.cornerRadius = 7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(UIColor.white, for: .normal)
-        button.addTarget(AddToDoViewController.self, action: #selector(addButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
+    
+    
     
     
     override func viewDidLoad() {
@@ -129,23 +136,13 @@ class AddToDoViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         dateTextField.inputView = datePicker
         // textField에 오늘 날짜로 표시되게 설정
-        dateTextField.text = dateFormat(date: Date())
+        dateTextField.text = dateFormat.dateToString(date: Date())
     }
     
     
     // MARK: - dateTextField 값이 변할 때 마다 동작
     @objc func dateChange(_ sender: UIDatePicker) {
-        dateTextField.text = dateFormat(date: sender.date)
-    }
-    
-    
-    
-    // MARK: - 텍스트 필드에 들어갈 텍스트를 DateFormatter 변환
-    private func dateFormat(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy / MM / dd"
-        
-        return formatter.string(from: date)
+        dateTextField.text = dateFormat.dateToString(date: sender.date)
     }
     
     
@@ -165,7 +162,7 @@ class AddToDoViewController: UIViewController {
     
     
     @objc func doneButtonHandeler(_ sender: UIBarButtonItem) {
-        dateTextField.text = dateFormat(date: datePicker.date)
+        dateTextField.text = dateFormat.dateToString(date: datePicker.date)
         // 키보드 내리기
         dateTextField.resignFirstResponder()
     }
@@ -206,9 +203,44 @@ class AddToDoViewController: UIViewController {
     }
     
     
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: nil))
+        present(alert, animated: true)
+    }
+    
+    
     // MARK: - Todo 추가
     @objc func addButtonTapped() {
-        // datepicker, textfield, textview 의 값을 가져오기
+        
+        // MARK: - 아무것도 입력하지 않았을때 예외처리
+        if dateTextField.text == nil {
+            showAlert(message: "날짜를 입력해 주세요")
+            return
+        }
+        
+        if let textField = titleTextField.text, textField.isEmpty {
+            showAlert(message: "할 일의 제목을 입력해 주세요")
+            return
+        }
+        
+        if let textView = contentTextView.text , textView == "할 일의 내용을 입력해 주세요" {
+            showAlert(message: "할 일의 내용을 입력해 주세요")
+            return
+        }
+        
+        
+        toDoViewModel.saveToDoData(
+            complete: false,
+            memoTitle: titleTextField.text!,
+            date: dateFormat.StringToDate(dateString: dateTextField.text ??  dateFormat.dateToString(date: Date())) ?? Date() ,
+            memoContent: contentTextView.text!, 
+            completion: {
+                print("저장완료")
+            }
+        )
+        
+        
         // datepicker, textfield, textview 의 값을 view model에게 전달
     }
 }
@@ -216,9 +248,8 @@ class AddToDoViewController: UIViewController {
 
 extension AddToDoViewController: UITextViewDelegate {
     // 입력을 시작할때
-    // (텍스트뷰는 플레이스홀더가 따로 있지 않아서, 플레이스 홀더처럼 동작하도록 직접 구현)
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "할일의 내용을 입력해주세요" {
+        if textView.textColor == .lightGray{
             textView.text = nil
             textView.textColor = .black
             textView.textAlignment = .left
@@ -227,9 +258,8 @@ extension AddToDoViewController: UITextViewDelegate {
     
     // 입력이 끝났을때
     func textViewDidEndEditing(_ textView: UITextView) {
-        // 비어있으면 다시 플레이스 홀더처럼 입력하기 위해서 조건 확인
         if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = "할일의 내용을 입력해주세요"
+            textView.text = "할 일의 내용을 입력해 주세요"
             textView.textColor = .lightGray
             textView.textAlignment = .center
         }

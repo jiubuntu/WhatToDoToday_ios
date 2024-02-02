@@ -4,6 +4,7 @@ import CoreData
 
 
 
+
 // MARK: - 코어데이터와 상호작용 하는 모델 정의
 final class CoreDataManager {
     

@@ -2,6 +2,14 @@ import UIKit
 import SwiftUI
 
 class ToDoDetailViewController: UIViewController {
+    let dateformat = DateFormat()
+    
+    var selectedToDo: Todo? {
+        didSet {
+            configureUIwithData()
+        }
+    }
+    
     let datePicker = UIDatePicker()
     
     let dateStackView: UIStackView = {
@@ -152,6 +160,13 @@ class ToDoDetailViewController: UIViewController {
         dateTextField.inputAccessoryView = toolBar
     }
     
+    
+    // MARK: - 데이터를 뿌려주기
+    private func configureUIwithData() {
+        dateTextField.text = dateformat.dateToString(date: selectedToDo?.date ?? Date())
+        titleTextField.text = selectedToDo?.memoTitle
+        contentTextView.text = selectedToDo?.memoContent
+    }
     
     @objc func doneButtonHandeler(_ sender: UIBarButtonItem) {
         dateTextField.text = dateFormat(date: datePicker.date)

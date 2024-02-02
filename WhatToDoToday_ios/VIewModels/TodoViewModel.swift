@@ -1,8 +1,20 @@
-//
-//  TodoViewModel.swift
-//  WhatToDoToday_ios
-//
-//  Created by 김지우 on 1/30/24.
-//
+import UIKit
 
-import Foundation
+
+
+// MARK: - coreDataManager를 통하여 data access
+final class TodoViewModel {
+    private let coreDataManager: CoreDataManager
+    
+    init(coreDataManager: CoreDataManager) {
+        self.coreDataManager = coreDataManager
+    }
+    
+    func getAllToDoData() -> [Todo] {
+        return coreDataManager.getAllToDoData()
+    }
+        
+    func saveToDoData(complete: Bool?, memoTitle: String?, date: Date, memoContent: String?, completion: @escaping () -> Void) {
+        
+    }
+}

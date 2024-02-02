@@ -8,6 +8,16 @@
 import UIKit
 
 final class ToDoListCell: UITableViewCell {
+    
+    
+    // MARK: - 데이터 저장
+    var toDoData: Todo? {
+        didSet {
+            configureUIwithData()
+        }
+    }
+    
+    
     // MARK: - 할 일의 상태표시를 보여주는 뷰
     lazy var toDoMark = {
         let view = UIView()
@@ -78,6 +88,11 @@ final class ToDoListCell: UITableViewCell {
             toDoTitle.centerYAnchor.constraint(equalTo: toDoMark.centerYAnchor),
             toDoTitle.heightAnchor.constraint(equalToConstant: 30)
         ])
+    }
+    
+    // 데이터를 가지고 표시하기
+    func configureUIwithData() {
+        toDoTitle.text = toDoData?.memoTitle
     }
     
     

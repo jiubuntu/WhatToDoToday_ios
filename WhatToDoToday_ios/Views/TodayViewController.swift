@@ -4,6 +4,8 @@ import SwiftUI
 
 class TodayViewController: UIViewController{
     
+    let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    
     // MARK: - 오늘의 목표 달성률 보여주는 뷰
     private lazy var goalAchievementRateView: UIView = {
         let view = UIView()
@@ -61,7 +63,9 @@ class TodayViewController: UIViewController{
         return tv
     }()
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        ToDoList.reloadData()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -180,15 +184,25 @@ class TodayViewController: UIViewController{
 // MARK: - 테이블뷰 설정
 extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return toDoViewModel.getAllToDoData().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListCell
+        //        let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListCell
+        //        cell.selectionStyle = .none
+        //        cell.contentView.backgroundColor = UIColor.white
+        //        cell.backgroundColor = UIColor.white
+        //        cell.toDoTitle.text = "test"
+        //        return cell
+        
+        let cell = ToDoList.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoListCell
+        // 셀에 모델(ToDoData) 전달
+        let toDoData = toDoViewModel.getAllToDoData()
+        cell.toDoData = toDoData[indexPath.row]
+        
+        
+        
         cell.selectionStyle = .none
-        cell.contentView.backgroundColor = UIColor.white
-        cell.backgroundColor = UIColor.white
-        cell.toDoTitle.text = "test"
         return cell
     }
 }
@@ -204,10 +218,17 @@ extension TodayViewController: UITableViewDelegate {
     
     // MARK: - 셀 클릭 시 동작
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // 셀을 클릭했을 때 실행되는 코드
-        let toDoDetailVC = ToDoDetailViewController()
-        toDoDetailVC.modalPresentationStyle = .automatic
-        present(toDoDetailVC, animated: true, completion: nil)
+        // 선택된 셀의 uuid를 가져옴
+        var toDoData = toDoViewModel.getAllToDoData()
+        if indexPath.row < toDoData.count {
+            let selectedToDo = toDoData[indexPath.row]
+            // 셀을 클릭했을 때 실행되는 코드
+            let toDoDetailVC = ToDoDetailViewController()
+            toDoDetailVC.selectedToDo = selectedToDo
+            toDoDetailVC.modalPresentationStyle = .automatic
+            present(toDoDetailVC, animated: true, completion: nil)
+        }
+        
     }
 }
 
