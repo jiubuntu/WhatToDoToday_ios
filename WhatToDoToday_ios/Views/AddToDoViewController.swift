@@ -237,6 +237,7 @@ class AddToDoViewController: UIViewController {
             memoContent: contentTextView.text!, 
             completion: {
                 print("저장완료")
+                self.navigationController?.popViewController(animated: true)
             }
         )
         

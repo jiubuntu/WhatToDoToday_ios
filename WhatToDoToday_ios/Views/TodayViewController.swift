@@ -199,9 +199,6 @@ extension TodayViewController: UITableViewDataSource {
         // 셀에 모델(ToDoData) 전달
         let toDoData = toDoViewModel.getAllToDoData()
         cell.toDoData = toDoData[indexPath.row]
-        
-        
-        
         cell.selectionStyle = .none
         return cell
     }
@@ -219,9 +216,11 @@ extension TodayViewController: UITableViewDelegate {
     // MARK: - 셀 클릭 시 동작
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 선택된 셀의 uuid를 가져옴
-        var toDoData = toDoViewModel.getAllToDoData()
+        let toDoData = toDoViewModel.getAllToDoData()
+        print("toDoData \(toDoData)")
         if indexPath.row < toDoData.count {
             let selectedToDo = toDoData[indexPath.row]
+            print("toDoData \(toDoData)")
             // 셀을 클릭했을 때 실행되는 코드
             let toDoDetailVC = ToDoDetailViewController()
             toDoDetailVC.selectedToDo = selectedToDo
