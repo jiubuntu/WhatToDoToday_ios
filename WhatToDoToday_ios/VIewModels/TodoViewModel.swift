@@ -17,4 +17,8 @@ final class TodoViewModel {
     func saveToDoData(complete: Bool?, memoTitle: String?, date: Date, memoContent: String?, completion: @escaping () -> Void) {
         coreDataManager.saveToDoData(complete: complete, memoTitle: memoTitle, date: date, memoContent: memoContent, completion: completion)
     }
+    
+    func updateToDo(newToDoData: Todo, completion: @escaping (String) -> Void) {
+        self.coreDataManager.updateToDo(newToDoData: newToDoData, completion: completion)
+    }
 }

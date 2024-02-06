@@ -2,6 +2,8 @@ import UIKit
 import SwiftUI
 
 class ToDoDetailViewController: UIViewController {
+    let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    
     let dateformat = DateFormat()
     
     var selectedToDo: Todo? {
@@ -52,7 +54,7 @@ class ToDoDetailViewController: UIViewController {
         tv.backgroundColor = .secondarySystemBackground
         tv.layer.cornerRadius = 7
         tv.text = "할일의 내용을 입력해주세요"
-        tv.textColor = .lightGray
+        tv.textColor = .black
         tv.textAlignment = .center
         tv.font = UIFont.systemFont(ofSize: 16)
         return tv
@@ -65,13 +67,13 @@ class ToDoDetailViewController: UIViewController {
         button.layer.cornerRadius = 7
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
         button.setTitleColor(UIColor.white, for: .normal)
+        button.addTarget(self, action: #selector(updateButtonTapped), for: .touchUpInside)
         return button
     }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        config()
         setNavigation()
         setUI()
         setupTextField()
@@ -80,9 +82,6 @@ class ToDoDetailViewController: UIViewController {
         makeConstraint()
     }
     
-    private func config() {
-        contentTextView.delegate = self
-    }
     
     
     
@@ -204,34 +203,33 @@ class ToDoDetailViewController: UIViewController {
         ])
     }
     
+    @objc func updateButtonTapped() {
+        if let targetToDo = selectedToDo {
+            toDoViewModel.updateToDo(
+                newToDoData: targetToDo,
+                completion: { result in
+                    switch result {
+                    case "success":
+                        print("Todo 업데이트 완료")
+                    case "fail":
+                        print("Todo 업데이트 실패")
+                    case "pkeyfindfail":
+                        print("Todo Pkey 찾기 실패")
+                    default:
+                        print("ToDo Update 알수없는 결과")
+                    }
+                self.navigationController?.popViewController(animated: true)
+                }
+            )
+        }
+    }
+    
     // 다른 곳을 터치하면 키보드 내리기
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
 }
 
-
-extension ToDoDetailViewController: UITextViewDelegate {
-    // 입력을 시작할때
-    // (텍스트뷰는 플레이스홀더가 따로 있지 않아서, 플레이스 홀더처럼 동작하도록 직접 구현)
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "할일의 내용을 입력해주세요" {
-            textView.text = nil
-            textView.textColor = .black
-            textView.textAlignment = .left
-        }
-    }
-    
-    // 입력이 끝났을때
-    func textViewDidEndEditing(_ textView: UITextView) {
-        // 비어있으면 다시 플레이스 홀더처럼 입력하기 위해서 조건 확인
-        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-            textView.text = "할일의 내용을 입력해주세요"
-            textView.textColor = .lightGray
-            textView.textAlignment = .center
-        }
-    }
-}
 
 
 // MARK: - preview를 위한...

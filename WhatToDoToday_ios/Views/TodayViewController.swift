@@ -195,7 +195,7 @@ extension TodayViewController: UITableViewDataSource {
         //        cell.toDoTitle.text = "test"
         //        return cell
         
-        let cell = ToDoList.dequeueReusableCell(withIdentifier: "ToDoCell", for: indexPath) as! ToDoListCell
+        let cell = ToDoList.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListCell
         // 셀에 모델(ToDoData) 전달
         let toDoData = toDoViewModel.getAllToDoData()
         cell.toDoData = toDoData[indexPath.row]
