@@ -1,10 +1,17 @@
 import UIKit
 import SwiftUI
+import CoreData
 
 class ToDoDetailViewController: UIViewController {
-    let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    weak var delegate: ToDoDetailDelegate?
     
-    let dateformat = DateFormat()
+    let toDoEntityName: String = "Todo"
+    
+    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+    
+    lazy var context = appDelegate?.persistentContainer.viewContext
+    
+    let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
     
     var selectedToDo: Todo? {
         didSet {
@@ -13,6 +20,17 @@ class ToDoDetailViewController: UIViewController {
     }
     
     let datePicker = UIDatePicker()
+    
+    
+//    let deleteButton: UIButton = {
+//        let button = UIButton(type: .system)
+//        button.setTitle("삭제", for: .normal)
+//        button.backgroundColor = UIColor.systemRed
+//        button.setTitleColor(UIColor.white, for: .normal)
+//        button.layer.cornerRadius = 7
+//        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
+//        return button
+//    }()
     
     let dateStackView: UIStackView = {
         let sv = UIStackView()
@@ -42,7 +60,7 @@ class ToDoDetailViewController: UIViewController {
         let tf = UITextField()
         tf.backgroundColor = .secondarySystemBackground
         tf.layer.cornerRadius = 7
-        tf.placeholder = "할일의 제목을 입력해주세요"
+        tf.textColor = UIColor.black
         tf.textAlignment = .center
         tf.font = UIFont.systemFont(ofSize: 16)
         return tf
@@ -53,7 +71,6 @@ class ToDoDetailViewController: UIViewController {
         let tv = UITextView()
         tv.backgroundColor = .secondarySystemBackground
         tv.layer.cornerRadius = 7
-        tv.text = "할일의 내용을 입력해주세요"
         tv.textColor = .black
         tv.textAlignment = .center
         tv.font = UIFont.systemFont(ofSize: 16)
@@ -100,7 +117,9 @@ class ToDoDetailViewController: UIViewController {
         view.addSubview(dateStackView)
         view.addSubview(titleTextField)
         view.addSubview(contentTextView)
+//        view.addSubview(deleteButton)
         
+//        deleteButton.translatesAutoresizingMaskIntoConstraints = false
         dateTextField.translatesAutoresizingMaskIntoConstraints = false
         dateStackView.translatesAutoresizingMaskIntoConstraints = false
         titleTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -124,8 +143,13 @@ class ToDoDetailViewController: UIViewController {
         // 값이 변할 때마다 동작을 설정해 줌
         datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         dateTextField.inputView = datePicker
-        // textField에 오늘 날짜로 표시되게 설정
-        dateTextField.text = dateFormat(date: Date())
+        // textField 날짜 표시 설정
+        if let date = selectedToDo?.date {
+            dateTextField.text = date
+        } else {
+            dateTextField.text = dateFormat(date: Date())
+        }
+        
     }
     
     
@@ -162,7 +186,7 @@ class ToDoDetailViewController: UIViewController {
     
     // MARK: - 데이터를 뿌려주기
     private func configureUIwithData() {
-        dateTextField.text = dateformat.dateToString(date: selectedToDo?.date ?? Date())
+        dateTextField.text = selectedToDo?.date
         titleTextField.text = selectedToDo?.memoTitle
         contentTextView.text = selectedToDo?.memoContent
     }
@@ -175,6 +199,9 @@ class ToDoDetailViewController: UIViewController {
     
     private func makeConstraint() {
         NSLayoutConstraint.activate([
+//            deleteButton.widthAnchor.constraint(equalToConstant: 55),
+//            deleteButton.heightAnchor.constraint(equalToConstant: 40),
+            
             dateStackView.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
             dateStackView.widthAnchor.constraint(equalToConstant: 200),
             dateStackView.heightAnchor.constraint(equalToConstant: 70),
@@ -203,25 +230,45 @@ class ToDoDetailViewController: UIViewController {
         ])
     }
     
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "확인", style: .default, handler: {_ in
+            self.delegate?.didUpdateToDo()
+            self.dismiss(animated: true)
+        }))
+        present(alert, animated: true)
+    }
+    
     @objc func updateButtonTapped() {
-        if let targetToDo = selectedToDo {
-            toDoViewModel.updateToDo(
-                newToDoData: targetToDo,
-                completion: { result in
-                    switch result {
-                    case "success":
-                        print("Todo 업데이트 완료")
-                    case "fail":
-                        print("Todo 업데이트 실패")
-                    case "pkeyfindfail":
-                        print("Todo Pkey 찾기 실패")
-                    default:
-                        print("ToDo Update 알수없는 결과")
-                    }
-                self.navigationController?.popViewController(animated: true)
+        guard let targetToDo = selectedToDo else { return }
+        guard let targetToDoDate = targetToDo.date else { return }
+        guard let targetToDoTitle = targetToDo.memoTitle else { return }
+        guard let targetToDoContent = targetToDo.memoContent else { return }
+        
+        
+        targetToDo.date = dateTextField.text
+        targetToDo.memoTitle = titleTextField.text
+        targetToDo.memoContent = contentTextView.text
+        
+        toDoViewModel.updateToDo(
+            newToDoData: targetToDo,
+            completion: { result in
+                switch result {
+                case "success":
+                    print("Todo 업데이트 완료")
+                    self.showAlert(message: "저장되었습니다")
+                case "fail":
+                    print("Todo 업데이트 실패")
+                    self.showAlert(message: "저장에 실패하였습니다. 다시 시도해주세요")
+                case "pkeyfindfail":
+                    print("Todo Pkey 찾기 실패")
+                    self.showAlert(message: "저장에 실패하였습니다. 다시 시도해주세요")
+                default:
+                    print("ToDo Update 알수없는 결과")
+                    self.showAlert(message: "저장에 실패하였습니다. 다시 시도해주세요")
                 }
-            )
-        }
+            }
+        )
     }
     
     // 다른 곳을 터치하면 키보드 내리기

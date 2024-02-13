@@ -6,8 +6,6 @@ class AddToDoViewController: UIViewController {
     
     let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
     
-    let dateFormat = DateFormat()
-    
     let datePicker = UIDatePicker()
     
     var toDoDate: Date? {
@@ -136,13 +134,13 @@ class AddToDoViewController: UIViewController {
         datePicker.addTarget(self, action: #selector(dateChange), for: .valueChanged)
         dateTextField.inputView = datePicker
         // textField에 오늘 날짜로 표시되게 설정
-        dateTextField.text = dateFormat.dateToString(date: Date())
+        dateTextField.text = Date().toString()
     }
     
     
     // MARK: - dateTextField 값이 변할 때 마다 동작
     @objc func dateChange(_ sender: UIDatePicker) {
-        dateTextField.text = dateFormat.dateToString(date: sender.date)
+        dateTextField.text = Date().toString()
     }
     
     
@@ -162,7 +160,7 @@ class AddToDoViewController: UIViewController {
     
     
     @objc func doneButtonHandeler(_ sender: UIBarButtonItem) {
-        dateTextField.text = dateFormat.dateToString(date: datePicker.date)
+        dateTextField.text = datePicker.date.toString()
         // 키보드 내리기
         dateTextField.resignFirstResponder()
     }
@@ -232,9 +230,9 @@ class AddToDoViewController: UIViewController {
         
         toDoViewModel.saveToDoData(
             complete: false,
-            memoTitle: titleTextField.text!,
-            date: dateFormat.StringToDate(dateString: dateTextField.text ??  dateFormat.dateToString(date: Date())) ?? Date() ,
-            memoContent: contentTextView.text!, 
+            memoTitle: titleTextField.text,
+            date: dateTextField.text,
+            memoContent: contentTextView.text,
             completion: {
                 print("저장완료")
                 self.navigationController?.popViewController(animated: true)
@@ -242,7 +240,6 @@ class AddToDoViewController: UIViewController {
         )
         
         
-        // datepicker, textfield, textview 의 값을 view model에게 전달
     }
 }
 

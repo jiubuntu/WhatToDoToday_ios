@@ -18,7 +18,8 @@ extension Todo {
     @NSManaged public var pkey: UUID?
     @NSManaged public var memoTitle: String?
     @NSManaged public var memoContent: String?
-    @NSManaged public var date: Date?
+    @NSManaged public var date: String?
+    @NSManaged public var timeStamp: Date?
     @NSManaged public var complete: Bool
 
 }

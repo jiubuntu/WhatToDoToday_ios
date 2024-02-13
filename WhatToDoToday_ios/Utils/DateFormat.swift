@@ -1,25 +1,24 @@
 import UIKit
 
-struct DateFormat {
-    
-    // MARK: - Date를 String으로 변환
-    func dateToString(date: Date) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        return formatter.string(from: date)
-    }
-    
-    // MARK: - String을 Date으로 변환
-    func StringToDate(dateString: String) -> Date? {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy-MM-dd"
-        
-        if let date = formatter.date(from: dateString) {
+extension String {
+    func toDate() -> Date? { //"yyyy-MM-dd HH:mm:ss"
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        if let date = dateFormatter.date(from: self) {
             return date
         } else {
-            print("String -> Date 변환 실패")
             return nil
         }
     }
 }
+
+extension Date {
+    func toString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        return dateFormatter.string(from: self)
+    }
+}
+

@@ -61,6 +61,9 @@ class CalendarViewController: UIViewController {
     // MARK: - 해야할일들을 표시하기 위한 테이블 뷰
     private lazy var CalendarToDoList: UITableView = {
         let tv = UITableView()
+        tv.layer.borderWidth = 1
+        tv.layer.borderColor = #colorLiteral(red: 0.7764706016, green: 0.7764706016, blue: 0.7764706016, alpha: 1)
+        tv.layer.cornerRadius = 10
         // 다크모드인지 체크
         if traitCollection.userInterfaceStyle == .light {
             tv.backgroundColor = UIColor.white
@@ -90,7 +93,10 @@ class CalendarViewController: UIViewController {
     
     private func setTableView() {
         CalendarToDoList.register(ToDoListCell.self, forCellReuseIdentifier: "ToDoListCell")
-        CalendarToDoList.separatorStyle = .none
+//        CalendarToDoList.separatorStyle = .none
+        CalendarToDoList.separatorStyle = .singleLine
+        CalendarToDoList.separatorColor = .lightGray
+        CalendarToDoList.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     

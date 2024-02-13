@@ -10,15 +10,21 @@ final class TodoViewModel {
         self.coreDataManager = coreDataManager
     }
     
-    func getAllToDoData() -> [Todo] {
-        return coreDataManager.getAllToDoData()
+    func getAllToDoData(forDate date: String = Date().toString()) -> [Todo] {
+        return coreDataManager.getAllToDoData(forDate: date)
     }
         
-    func saveToDoData(complete: Bool?, memoTitle: String?, date: Date, memoContent: String?, completion: @escaping () -> Void) {
+    func saveToDoData(complete: Bool?, memoTitle: String?, date: String?, memoContent: String?, completion: @escaping () -> Void) {
         coreDataManager.saveToDoData(complete: complete, memoTitle: memoTitle, date: date, memoContent: memoContent, completion: completion)
     }
     
     func updateToDo(newToDoData: Todo, completion: @escaping (String) -> Void) {
         self.coreDataManager.updateToDo(newToDoData: newToDoData, completion: completion)
     }
+    
+    func deleteToDo(data: Todo, completion: @escaping (String) -> Void) {
+        self.coreDataManager.deleteToDo(data: data, completion: completion)
+    }
+    
+    
 }

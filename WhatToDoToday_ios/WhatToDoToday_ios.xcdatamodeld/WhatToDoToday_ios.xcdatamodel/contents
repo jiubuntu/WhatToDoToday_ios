@@ -2,9 +2,10 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23B74" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Todo" representedClassName="Todo" syncable="YES">
         <attribute name="complete" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
-        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="date" optional="YES" attributeType="String"/>
         <attribute name="memoContent" optional="YES" attributeType="String"/>
         <attribute name="memoTitle" optional="YES" attributeType="String"/>
         <attribute name="pkey" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="timeStamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
 </model>

@@ -28,6 +28,7 @@
 		B74B58CA2B63A98500B73B9F /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58C92B63A98500B73B9F /* CoreDataManager.swift */; };
 		B74B58CF2B69354E00B73B9F /* TodoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58CE2B69354E00B73B9F /* TodoViewModel.swift */; };
 		B74B58D12B69487300B73B9F /* DateFormat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58D02B69487300B73B9F /* DateFormat.swift */; };
+		B74B58D32B73B23600B73B9F /* Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = B74B58D22B73B23600B73B9F /* Delegates.swift */; };
 		B76FE5542B61015F00E34731 /* AddToDoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76FE5532B61015F00E34731 /* AddToDoViewController.swift */; };
 		B76FE5562B61099500E34731 /* ToDoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B76FE5552B61099500E34731 /* ToDoDetailViewController.swift */; };
 		B7992E6A2B5F978400FEE62E /* MyPageTotalGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7992E692B5F978400FEE62E /* MyPageTotalGaugeChart.swift */; };
@@ -85,6 +86,7 @@
 		B74B58C92B63A98500B73B9F /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		B74B58CE2B69354E00B73B9F /* TodoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoViewModel.swift; sourceTree = "<group>"; };
 		B74B58D02B69487300B73B9F /* DateFormat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormat.swift; sourceTree = "<group>"; };
+		B74B58D22B73B23600B73B9F /* Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Delegates.swift; sourceTree = "<group>"; };
 		B76FE5532B61015F00E34731 /* AddToDoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToDoViewController.swift; sourceTree = "<group>"; };
 		B76FE5552B61099500E34731 /* ToDoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetailViewController.swift; sourceTree = "<group>"; };
 		B7992E692B5F978400FEE62E /* MyPageTotalGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageTotalGaugeChart.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 		B70876692B575D56005DE87B /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B74B58D22B73B23600B73B9F /* Delegates.swift */,
 				B708766A2B576281005DE87B /* AddPreview.swift */,
 				B7AABAEC2B5A68DA00947725 /* Color.swift */,
 				B74B58D02B69487300B73B9F /* DateFormat.swift */,
@@ -458,6 +461,7 @@
 				B73CF6342B58E2CE00EDAA10 /* TabBarController.swift in Sources */,
 				B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */,
 				B7992E6E2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift in Sources */,
+				B74B58D32B73B23600B73B9F /* Delegates.swift in Sources */,
 				B70876382B575CCE005DE87B /* TodayViewController.swift in Sources */,
 				B70876342B575CCE005DE87B /* AppDelegate.swift in Sources */,
 				B70876362B575CCE005DE87B /* SceneDelegate.swift in Sources */,
