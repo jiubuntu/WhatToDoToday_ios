@@ -5,6 +5,7 @@ import SwiftUI
 class AddToDoViewController: UIViewController {
     
     let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    let gaugeChartData = GaugeChartData(coreDataManager: CoreDataManager.shared)
     
     let datePicker = UIDatePicker()
     
@@ -14,7 +15,7 @@ class AddToDoViewController: UIViewController {
         }
     }
     
-    
+    var previous: String = ""
     
     
     let dateStackView: UIStackView = {
@@ -73,8 +74,6 @@ class AddToDoViewController: UIViewController {
         button.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
         return button
     }()
-    
-    
     
     
     override func viewDidLoad() {
@@ -235,11 +234,16 @@ class AddToDoViewController: UIViewController {
             memoContent: contentTextView.text,
             completion: {
                 print("저장완료")
+                if self.previous == "" {
+                    self.gaugeUpdateDataInCoreData()
+                }
                 self.navigationController?.popViewController(animated: true)
             }
         )
-        
-        
+    }
+    
+    private func gaugeUpdateDataInCoreData() {
+        gaugeChartData.TodayUpdateProgress()
     }
 }
 

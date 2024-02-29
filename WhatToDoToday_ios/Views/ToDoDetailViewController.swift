@@ -2,7 +2,7 @@ import UIKit
 import SwiftUI
 import CoreData
 
-class ToDoDetailViewController: UIViewController {
+class ToDoDetailViewController: UIViewController,GaugeChartDelegate {
     weak var delegate: ToDoDetailDelegate?
     
     let toDoEntityName: String = "Todo"
@@ -12,6 +12,7 @@ class ToDoDetailViewController: UIViewController {
     lazy var context = appDelegate?.persistentContainer.viewContext
     
     let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    let gaugeChartData = GaugeChartData(coreDataManager: CoreDataManager.shared)
     
     var selectedToDo: Todo? {
         didSet {
@@ -20,6 +21,10 @@ class ToDoDetailViewController: UIViewController {
     }
     
     let datePicker = UIDatePicker()
+    
+    var previous = ""
+    
+    weak var gaugeDelegate: GaugeChartDelegate?
     
     
 //    let deleteButton: UIButton = {
@@ -163,7 +168,7 @@ class ToDoDetailViewController: UIViewController {
     // MARK: - 텍스트 필드에 들어갈 텍스트를 DateFormatter 변환
     private func dateFormat(date: Date) -> String {
         let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy / MM / dd"
+        formatter.dateFormat = "yyyy-MM-dd"
         
         return formatter.string(from: date)
     }
@@ -257,6 +262,7 @@ class ToDoDetailViewController: UIViewController {
                 case "success":
                     print("Todo 업데이트 완료")
                     self.showAlert(message: "저장되었습니다")
+                    self.updateGaugeData()
                 case "fail":
                     print("Todo 업데이트 실패")
                     self.showAlert(message: "저장에 실패하였습니다. 다시 시도해주세요")
@@ -275,7 +281,18 @@ class ToDoDetailViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
+    
+    private func gaugeUpdateDataInCoreData() {
+        if previous == "" {
+            gaugeChartData.TodayUpdateProgress()
+        }
+    }
+    
+    func updateGaugeData() {
+        gaugeDelegate?.updateGaugeData()
+    }
 }
+
 
 
 

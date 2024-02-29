@@ -11,15 +11,15 @@ import SwiftUI
 
 // MARK: - Today 화면에서 보여줄 total 게이지차트 정의
 struct GaugeChart: View {
-    @State private var progress = 0.3
+    @ObservedObject var gaugeChartData: GaugeChartData // ObservableObject를 사용하여 데이터 바인딩
     
     var body: some View {
-        Gauge(value: progress) {
+        Gauge(value: gaugeChartData.progress) {
             Text("오늘의 목표 달성률")
                 .foregroundColor(Color(.black))
                 .font(Font.system(.body).weight(.bold))
         } currentValueLabel: {
-            Text(progress.formatted(.percent))
+            Text(gaugeChartData.progress.formatted(.percent))
         }
         .accentColor(Color(hex: 0x9FDEBD))
     }

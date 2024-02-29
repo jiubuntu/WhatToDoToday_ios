@@ -36,6 +36,8 @@
 		B7992E6E2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7992E6D2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift */; };
 		B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */; };
 		B7AABAED2B5A68DA00947725 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7AABAEC2B5A68DA00947725 /* Color.swift */; };
+		B7BCF5F82B831E580046C257 /* GaugeChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCF5F72B831E580046C257 /* GaugeChartData.swift */; };
+		B7BCF5FA2B8DE9FE0046C257 /* CalendarGaugeChartData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7BCF5F92B8DE9FE0046C257 /* CalendarGaugeChartData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		B7992E6D2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageWeekGaugeChart.swift; sourceTree = "<group>"; };
 		B7AABAEA2B5A664B00947725 /* CalendarGaugeChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGaugeChart.swift; sourceTree = "<group>"; };
 		B7AABAEC2B5A68DA00947725 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		B7BCF5F72B831E580046C257 /* GaugeChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GaugeChartData.swift; sourceTree = "<group>"; };
+		B7BCF5F92B8DE9FE0046C257 /* CalendarGaugeChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarGaugeChartData.swift; sourceTree = "<group>"; };
 		F660850040C61FEDF7FA8BE0 /* Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; path = "Target Support Files/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests/Pods-WhatToDoToday_ios-WhatToDoToday_iosUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -223,6 +227,8 @@
 			isa = PBXGroup;
 			children = (
 				B74B58CE2B69354E00B73B9F /* TodoViewModel.swift */,
+				B7BCF5F72B831E580046C257 /* GaugeChartData.swift */,
+				B7BCF5F92B8DE9FE0046C257 /* CalendarGaugeChartData.swift */,
 			);
 			path = VIewModels;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				B7AABAEB2B5A664B00947725 /* CalendarGaugeChart.swift in Sources */,
 				B7992E6E2B5F988E00FEE62E /* MyPageWeekGaugeChart.swift in Sources */,
 				B74B58D32B73B23600B73B9F /* Delegates.swift in Sources */,
+				B7BCF5F82B831E580046C257 /* GaugeChartData.swift in Sources */,
 				B70876382B575CCE005DE87B /* TodayViewController.swift in Sources */,
 				B70876342B575CCE005DE87B /* AppDelegate.swift in Sources */,
 				B70876362B575CCE005DE87B /* SceneDelegate.swift in Sources */,
@@ -473,6 +480,7 @@
 				B7992E6A2B5F978400FEE62E /* MyPageTotalGaugeChart.swift in Sources */,
 				B74B58CF2B69354E00B73B9F /* TodoViewModel.swift in Sources */,
 				B73CF6362B591B7400EDAA10 /* GaugeChart.swift in Sources */,
+				B7BCF5FA2B8DE9FE0046C257 /* CalendarGaugeChartData.swift in Sources */,
 				B708766B2B576281005DE87B /* AddPreview.swift in Sources */,
 				B708763E2B575CCE005DE87B /* WhatToDoToday_ios.xcdatamodeld in Sources */,
 				B76FE5542B61015F00E34731 /* AddToDoViewController.swift in Sources */,

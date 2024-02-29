@@ -22,26 +22,46 @@ final class CoreDataManager {
     
     
     // MARK: - Todo 데이터 모두 가져오기
-    func getAllToDoData(forDate date: String = Date().toString()) -> [Todo] {
-        let datePredicate = NSPredicate(format: "date == %@", date as CVarArg)
+    func getAllToDoData(forDate date: String = "") -> [Todo] {
+        // 넘어온 날짜가 있을때
         var toDoList: [Todo] = []
-        // 임시저장소 체크
-        if let context = context {
-            let request = NSFetchRequest<NSManagedObject>(entityName: self.toDoEntityName)
-            let dateOrder = NSSortDescriptor(key: "timeStamp", ascending: true)
-            request.sortDescriptors = [dateOrder]
-            request.predicate = datePredicate
+        if date != "" {
+            let datePredicate = NSPredicate(format: "date == %@", date as CVarArg)
             
-            do {
-                // 임시저장소에서 데이터 가져오기
-                if let fetchedToDoList = try context.fetch(request) as? [Todo] {
-                    toDoList = fetchedToDoList
-                }
-            } catch {
-                print("[CoreDataManager] getAllToDoData Error")
-            }
+            // 임시저장소 체크
+            if let context = context {
+                let request = NSFetchRequest<NSManagedObject>(entityName: self.toDoEntityName)
+                let dateOrder = NSSortDescriptor(key: "timeStamp", ascending: true)
+                request.sortDescriptors = [dateOrder]
+                request.predicate = datePredicate
                 
+                do {
+                    // 임시저장소에서 데이터 가져오기
+                    if let fetchedToDoList = try context.fetch(request) as? [Todo] {
+                        toDoList = fetchedToDoList
+                    }
+                } catch {
+                    print("[CoreDataManager] getAllToDoData Error")
+                }
+            }
+        } else {
+            // 모든 데이터를 다 가져오기
+            if let context = context {
+                let request = NSFetchRequest<NSManagedObject>(entityName: self.toDoEntityName)
+                let dateOrder = NSSortDescriptor(key: "timeStamp", ascending: true)
+                request.sortDescriptors = [dateOrder]
+                
+                do {
+                    // 임시저장소에서 데이터 가져오기
+                    if let fetchedToDoList = try context.fetch(request) as? [Todo] {
+                        toDoList = fetchedToDoList
+                    }
+                } catch {
+                    print("[CoreDataManager] getAllToDoData Error")
+                }
+            }
         }
+        
         return toDoList
     }
     

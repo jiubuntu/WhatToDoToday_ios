@@ -4,6 +4,8 @@ import UIKit
 final class ToDoListCell: UITableViewCell {
     
     let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    let gaugeChartData = GaugeChartData(coreDataManager: CoreDataManager.shared)
+    weak var delegate: GaugeChartDelegateForCell?
     
     // MARK: - 데이터 저장
     var toDoData: Todo? {
@@ -147,5 +149,13 @@ final class ToDoListCell: UITableViewCell {
             )
             toDoMark.backgroundColor = #colorLiteral(red: 0.5023792982, green: 0.807808578, blue: 0.8718705773, alpha: 1)
         }
+        delegate?.toDoMarkTapped(for: self)
     }
 }
+
+
+//extension ToDoListCell: GaugeChartDelegateForCell {
+//    func toDoMarkTapped(for cell: ToDoListCell) {
+//        delegate?.toDoMarkTapped(for: self)
+//    }
+//}

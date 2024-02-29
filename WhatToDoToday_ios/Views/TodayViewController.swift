@@ -5,6 +5,7 @@ import SwiftUI
 class TodayViewController: UIViewController{
     
     let toDoViewModel = TodoViewModel(coreDataManager: CoreDataManager.shared)
+    let gaugeChartData = GaugeChartData(coreDataManager: CoreDataManager.shared)
     
     // MARK: - 오늘의 목표 달성률 보여주는 뷰
     private lazy var goalAchievementRateView: UIView = {
@@ -104,6 +105,7 @@ class TodayViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         ToDoList.reloadData()
         makeEmptyView()
+        gaugeUpdateDataInCoreData()
     }
     
     override func viewDidLoad() {
@@ -186,7 +188,7 @@ class TodayViewController: UIViewController{
     
     // MARK: - 게이지차트 세팅하기
     private func setGaugeChart() {
-        let hostingController = UIHostingController(rootView: GaugeChart())
+        let hostingController = UIHostingController(rootView: GaugeChart(gaugeChartData: gaugeChartData))
         hostingController.view.backgroundColor = UIColor.white
         // ViewController에 hostingController를 Child로 추가
         addChild(hostingController)
@@ -237,13 +239,17 @@ class TodayViewController: UIViewController{
     
     // MARK: - 테이블뷰에 데이터가 없을때 보여줄 엠티뷰
     private func makeEmptyView() {
-        let dataCount = toDoViewModel.getAllToDoData().count
+        let dataCount = toDoViewModel.getAllToDoData(forDate: Date().toString()).count
         // 데이터가 없을때 예외처리
         if dataCount == 0 {
             emptyView.isHidden = false
         } else {
             emptyView.isHidden = true
         }
+    }
+    
+    private func gaugeUpdateDataInCoreData() {
+        gaugeChartData.TodayUpdateProgress()
     }
 
 }
@@ -261,13 +267,14 @@ class TodayViewController: UIViewController{
 // MARK: - 테이블뷰 설정
 extension TodayViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toDoViewModel.getAllToDoData().count
+        return toDoViewModel.getAllToDoData(forDate: Date().toString()).count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ToDoList.dequeueReusableCell(withIdentifier: "ToDoListCell", for: indexPath) as! ToDoListCell
+        cell.delegate = self
         // 셀에 모델(ToDoData) 전달
-        let toDoData = toDoViewModel.getAllToDoData()
+        let toDoData = toDoViewModel.getAllToDoData(forDate: Date().toString())
         cell.toDoData = toDoData[indexPath.row]
         if cell.toDoData?.complete == true {
             cell.toDoMark.backgroundColor = #colorLiteral(red: 0.5023792982, green: 0.807808578, blue: 0.8718705773, alpha: 1)
@@ -294,11 +301,12 @@ extension TodayViewController: UITableViewDelegate {
     // MARK: - 셀 클릭 시 동작
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // 선택된 셀의 uuid를 가져옴
-        let toDoData = toDoViewModel.getAllToDoData()
+        let toDoData = toDoViewModel.getAllToDoData(forDate: Date().toString())
         if indexPath.row < toDoData.count {
             let selectedToDo = toDoData[indexPath.row]
             // 셀을 클릭했을 때 실행되는 코드
             let toDoDetailVC = ToDoDetailViewController()
+            toDoDetailVC.gaugeDelegate = self
             toDoDetailVC.delegate = self
             toDoDetailVC.selectedToDo = selectedToDo
             toDoDetailVC.modalPresentationStyle = .automatic
@@ -309,7 +317,7 @@ extension TodayViewController: UITableViewDelegate {
     
     // MARK: - 테이블뷰 셀을 옆으로 드래그해서 삭제하는 기능
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        let toDoData = toDoViewModel.getAllToDoData()
+        let toDoData = toDoViewModel.getAllToDoData(forDate: Date().toString())
         if editingStyle == .delete {
             // 여기에 삭제하는 코드 작성
             if indexPath.row < toDoData.count {
@@ -321,6 +329,7 @@ extension TodayViewController: UITableViewDelegate {
                         case "success":
                             print("Todo 삭제완료")
                             self.makeEmptyView()
+                            self.gaugeUpdateDataInCoreData()
                         case "fail":
                             print("Todo 삭제실패")
                         case "pkeyfindfail":
@@ -333,6 +342,7 @@ extension TodayViewController: UITableViewDelegate {
                 tableView.deleteRows(at: [indexPath], with: .fade)
             }
         } else if editingStyle == .insert {}
+        
     }
     
     
@@ -360,6 +370,21 @@ extension TodayViewController: UITextFieldDelegate {
 extension TodayViewController: ToDoDetailDelegate {
     func didUpdateToDo() {
         ToDoList.reloadData()
+    }
+}
+
+
+extension TodayViewController: GaugeChartDelegate {
+    func updateGaugeData() {
+        gaugeUpdateDataInCoreData()
+    }
+}
+
+
+extension TodayViewController: GaugeChartDelegateForCell {
+    func toDoMarkTapped(for cell: ToDoListCell) {
+        print("test")
+        gaugeUpdateDataInCoreData()
     }
 }
 
